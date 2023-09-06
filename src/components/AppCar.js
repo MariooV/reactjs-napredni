@@ -1,4 +1,7 @@
+import useIsDiesel from "../hooks/useIsDiesel";
+
 const AppCar = ({ car }) => {
+  const isDiesel = useIsDiesel(car.engine);
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginBottom: "20px" }}
@@ -10,6 +13,7 @@ const AppCar = ({ car }) => {
       <span>IsAutomatic car: {car.isAutomatic ? "Yes" : "No"}</span>
       <span>Engine car: {car.engine}</span>
       <span>Number of dors car: {car.numberOfDoors}</span>
+      <span>Engine is diesel: {isDiesel ? "Yes" : "No"}</span>
     </div>
   );
 };
