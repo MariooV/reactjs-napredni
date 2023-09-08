@@ -1,19 +1,11 @@
 import AppCars from "../components/AppCars";
-import Header from "../components/Header";
+import Wrapper from "../components/Wrapper";
 
 const Cars = () => {
   return (
-    <div
-      style={{
-        background: "grey",
-        minHeight: "100vh",
-        fontSize: "22px",
-        fontWeight: "500",
-      }}
-    >
-      <Header />
+    <Wrapper>
       <AppCars />
-    </div>
+    </Wrapper>
   );
 };
 
