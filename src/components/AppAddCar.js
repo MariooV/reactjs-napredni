@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { postCar } from "../services/carsService";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { postCar, getCar, patchCar } from "../services/carsService";
 
 const years = [];
 for (let i = 1990; i <= 2018; i++) years.push(i);
@@ -15,18 +15,45 @@ const AppAddCar = () => {
   const [engine, setEngine] = useState("");
 
   const navigate = useNavigate();
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (id) {
+      getCar(id).then(({ data }) => {
+        setBrand(data.brand);
+        setModel(data.model);
+        setYear(data.year);
+        setMaxSpeed(data.maxSpeed);
+        setNumberOfDoors(data.numberOfDoors);
+        setIsAutomatic(data.isAutomatic);
+        setEngine(data.engine);
+      });
+    }
+  }, []);
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    postCar({
-      brand,
-      model,
-      year,
-      maxSpeed,
-      numberOfDoors,
-      isAutomatic,
-      engine,
-    });
+    if (id) {
+      patchCar(id, {
+        brand,
+        model,
+        year,
+        maxSpeed,
+        numberOfDoors,
+        isAutomatic,
+        engine,
+      });
+    } else {
+      postCar({
+        brand,
+        model,
+        year,
+        maxSpeed,
+        numberOfDoors,
+        isAutomatic,
+        engine,
+      });
+    }
 
     navigate("/cars");
   };
@@ -143,7 +170,7 @@ const AppAddCar = () => {
         required
       />
       <br />
-      <button type="submit">Add car</button>
+      <button type="submit">{id ? "Edit Car" : "Add Car"}</button>
       <button onClick={handleReset} type="reset">
         Reset
       </button>

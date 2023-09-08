@@ -19,7 +19,7 @@ const AppCars = () => {
       }}
     >
       {cars.map((car, index) => (
-        <AppCar key={index} car={car} />
+        <AppCar key={index} id={index + 1} car={car} />
       ))}
     </div>
   );

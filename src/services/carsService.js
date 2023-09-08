@@ -7,3 +7,11 @@ export const getAllCars = () => {
 export const postCar = (car) => {
   return API.post("/cars", car);
 };
+
+export const getCar = (id) => {
+  return API.get(`/cars/${id}`);
+};
+
+export const patchCar = (id, car) => {
+  return API.patch(`/cars/${id}`, car);
+};
