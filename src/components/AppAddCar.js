@@ -41,6 +41,20 @@ const AppAddCar = () => {
     setEngine("");
   };
 
+  const handlePreview = (e) => {
+    window.alert(
+      JSON.stringify({
+        brand,
+        model,
+        year,
+        maxSpeed,
+        numberOfDoors,
+        isAutomatic,
+        engine,
+      })
+    );
+  };
+
   return (
     <form
       onSubmit={handleOnSubmit}
@@ -123,6 +137,9 @@ const AppAddCar = () => {
       <button type="submit">Add car</button>
       <button onClick={handleReset} type="reset">
         Reset
+      </button>
+      <button onClick={handlePreview} type="button">
+        Preview
       </button>
     </form>
   );
