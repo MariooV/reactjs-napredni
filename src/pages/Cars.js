@@ -1,17 +1,7 @@
 import AppCars from "../components/AppCars";
 import Header from "../components/Header";
-import { useContext, useEffect } from "react";
-import { CarsContext } from "../storage/CarsProvider";
 
 const Cars = () => {
-  const contextObj = useContext(CarsContext);
-
-  useEffect(() => {
-    contextObj.setCars("xd");
-  }, []);
-
-  console.log(contextObj);
-
   return (
     <div
       style={{
