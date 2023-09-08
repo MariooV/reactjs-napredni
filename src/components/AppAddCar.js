@@ -31,6 +31,16 @@ const AppAddCar = () => {
     navigate("/cars");
   };
 
+  const handleReset = (e) => {
+    setBrand("");
+    setModel("");
+    setYear(0);
+    setMaxSpeed(0);
+    setNumberOfDoors(0);
+    setIsAutomatic(false);
+    setEngine("");
+  };
+
   return (
     <form
       onSubmit={handleOnSubmit}
@@ -111,6 +121,9 @@ const AppAddCar = () => {
       />
       <br />
       <button type="submit">Add car</button>
+      <button onClick={handleReset} type="reset">
+        Reset
+      </button>
     </form>
   );
 };
