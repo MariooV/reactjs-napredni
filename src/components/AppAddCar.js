@@ -71,15 +71,19 @@ const AppAddCar = () => {
         value={brand}
         onChange={(e) => setBrand(e.target.value)}
         type="text"
+        required
+        minLength={2}
       />
       <label>Model</label>
       <input
         value={model}
         onChange={(e) => setModel(e.target.value)}
         type="text"
+        required
+        minLength={2}
       />
       <label>Year</label>
-      <select value={year} onChange={(e) => setYear(e.target.value)}>
+      <select value={year} onChange={(e) => setYear(e.target.value)} required>
         {years.map((year, index) => (
           <option key={index} value={year}>
             {year}
@@ -97,6 +101,7 @@ const AppAddCar = () => {
         value={numberOfDoors}
         onChange={(e) => setNumberOfDoors(e.target.value)}
         type="number"
+        required
       />
       <label>Is automatic</label>
       <input
@@ -111,6 +116,7 @@ const AppAddCar = () => {
         onChange={(e) => setEngine(e.target.value)}
         name="engineType"
         type="radio"
+        required
       />
       Petrol:
       <input
@@ -118,6 +124,7 @@ const AppAddCar = () => {
         onChange={(e) => setEngine(e.target.value)}
         name="engineType"
         type="radio"
+        required
       />
       Electric:
       <input
@@ -125,6 +132,7 @@ const AppAddCar = () => {
         onChange={(e) => setEngine(e.target.value)}
         name="engineType"
         type="radio"
+        required
       />
       Hybrid:
       <input
@@ -132,6 +140,7 @@ const AppAddCar = () => {
         onChange={(e) => setEngine(e.target.value)}
         name="engineType"
         type="radio"
+        required
       />
       <br />
       <button type="submit">Add car</button>
