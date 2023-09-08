@@ -4,10 +4,15 @@ import AppCar from "./AppCar";
 
 const AppCars = () => {
   const [cars, setCars] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+
+  const handleRefetch = () => {
+    setRefresh((prevState) => !prevState);
+  };
 
   useEffect(() => {
     getAllCars().then(({ data }) => setCars(data));
-  }, []);
+  }, [refresh]);
 
   return (
     <div
@@ -19,7 +24,7 @@ const AppCars = () => {
       }}
     >
       {cars.map((car, index) => (
-        <AppCar key={index} id={index + 1} car={car} />
+        <AppCar key={index} car={car} handleRefetch={handleRefetch} />
       ))}
     </div>
   );

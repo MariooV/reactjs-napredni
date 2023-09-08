@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { deleteCar } from "../services/carsService";
 
-const AppCar = ({ id, car }) => {
+const AppCar = ({ car, handleRefetch }) => {
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginBottom: "20px" }}
@@ -12,9 +13,16 @@ const AppCar = ({ id, car }) => {
       <span>IsAutomatic car: {car.isAutomatic ? "Yes" : "No"}</span>
       <span>Engine car: {car.engine}</span>
       <span>Number of dors car: {car.numberOfDoors}</span>
-      <Link to={`/edit/${id}`}>
+      <Link to={`/edit/${car.id}`}>
         <button>Edit</button>
       </Link>
+      <button
+        onClick={() => {
+          deleteCar(car.id).then(() => handleRefetch());
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 };

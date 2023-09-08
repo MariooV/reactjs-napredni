@@ -15,3 +15,7 @@ export const getCar = (id) => {
 export const patchCar = (id, car) => {
   return API.patch(`/cars/${id}`, car);
 };
+
+export const deleteCar = (id) => {
+  return API.delete(`/cars/${id}`);
+};
