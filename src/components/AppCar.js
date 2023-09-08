@@ -18,7 +18,11 @@ const AppCar = ({ car, handleRefetch }) => {
       </Link>
       <button
         onClick={() => {
-          deleteCar(car.id).then(() => handleRefetch());
+          const answer = window.prompt(
+            "Are you sure you want to delete? Y/N",
+            "N"
+          );
+          if (answer === "Y") deleteCar(car.id).then(() => handleRefetch());
         }}
       >
         Delete
